@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack -c --mode development",
     "build:prod": "webpack -c --mode production",
+    "vercel-build": "npm run build:prod",
     "start": "webpack-dev-server --inline --watch --hot --colors -d --port 5000"
   },
   "keywords": [],

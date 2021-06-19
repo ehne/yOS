@@ -7,7 +7,7 @@ module.exports = {
     app: './src/index.js',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public/dist'),
     publicPath: '/dist/',
     filename: 'bundle.js',
     chunkFilename: 'chunks/[name]/index.[chunkhash].js',
@@ -18,7 +18,7 @@ module.exports = {
   devServer: {
     open: true,
     historyApiFallback: {
-      index: 'index.html'
+      index: 'public/index.html'
     }
   },
   optimization: {
