@@ -1,0 +1,46 @@
+$colourVariants: ("primary": [--c-accent, --c-contrast], "secondary": [--c-accent-light, --c-accent], "inverted": [--c-bg, --c-fg]);
+
+.yOS- {
+    
+    &btn {
+        outline: none;
+        border: 0px;
+        border-radius: var(--r-large);
+        height: calc(var(--u) * 4);
+        background-color: var(--c-fg);
+        color: var(--c-bg);
+        transition: all 0.1s ease-in-out 0s;
+        cursor: pointer;
+        padding: 0 var(--u);
+        font-size: 1em;
+        text-decoration: none;
+        font-weight: bold;
+        &.-full-width {
+           width: 100%
+        }
+        &.-outlined {
+            border: 2px solid var(--c-fg);
+            background-color: transparent;
+            color: var(--c-fg)
+        }
+        &:hover {
+              filter: brightness(0.8)
+        } 
+        /* colour variants */
+        @each $name, $colours in $colourVariants {
+            &.-#{$name} {
+                background-color: var(nth($colours, 1));
+                color: var(nth($colours, 2));
+                &.-outlined {
+                    border: 2px solid var(nth($colours, 1));
+                    background-color: transparent
+                }
+            }
+            
+        }
+       
+    } 
+    
+    
+}
+

@@ -1,0 +1,40 @@
+.yOS-btn {
+  outline: none;
+  border: 0px;
+  border-radius: var(--r-large);
+  height: calc(var(--u) * 4);
+  background-color: var(--c-fg);
+  color: var(--c-bg);
+  transition: all 0.1s ease-in-out 0s;
+  cursor: pointer;
+  padding: 0 var(--u);
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  /* colour variants */ }
+  .yOS-btn.-full-width {
+    width: 100%; }
+  .yOS-btn.-outlined {
+    border: 2px solid var(--c-fg);
+    background-color: transparent;
+    color: var(--c-fg); }
+  .yOS-btn:hover {
+    filter: brightness(0.8); }
+  .yOS-btn.-primary {
+    background-color: var(--c-accent);
+    color: var(--c-contrast); }
+    .yOS-btn.-primary.-outlined {
+      border: 2px solid var(--c-accent);
+      background-color: transparent; }
+  .yOS-btn.-secondary {
+    background-color: var(--c-accent-light);
+    color: var(--c-accent); }
+    .yOS-btn.-secondary.-outlined {
+      border: 2px solid var(--c-accent-light);
+      background-color: transparent; }
+  .yOS-btn.-inverted {
+    background-color: var(--c-bg);
+    color: var(--c-fg); }
+    .yOS-btn.-inverted.-outlined {
+      border: 2px solid var(--c-bg);
+      background-color: transparent; }

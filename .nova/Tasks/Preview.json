@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "node-sass src\/yOS-app.scss yOS-app.css\nnode-sass src\/yOS-desktop.scss yOS-desktop.css"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "serve"
+    }
+  },
+  "buildBeforeRunning" : true,
+  "identifier" : "7DF34869-CDCF-419B-AB7B-72C5C97E3D9F"
+}

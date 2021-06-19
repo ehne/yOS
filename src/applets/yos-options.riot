@@ -1,0 +1,104 @@
+<yos-options>
+    <style>
+        .opts-group {
+            padding: calc(var(--u) * 2) 0;
+            border-bottom: 2px solid var(--c-med)
+        }
+        .opts-group:first-child {
+            padding-top: 0
+        }
+        .opts-group:last-child {
+            border-bottom: none
+        }
+        .opts-group-title {
+            font-size: calc(var(--u) * 2);
+            font-weight: bold;
+            margin-bottom: var(--u)
+        }
+        .opts-field {
+            display: flex;
+            margin-bottom: var(--u);
+            position: relative;
+            text-align: left
+        }
+        .opts-field [type=checkbox] {
+            opacity: 0;
+            position: absolute;
+            z-index: 0
+        }
+        .opts-field [type=checkbox] + .opts-field-label {
+            cursor: pointer;
+            display: inline-block;
+            padding-left: calc(var(--u) * 3);
+        }
+        .opts-field [type=checkbox] + .opts-field-label::before {
+            border: 2px solid var(--c-accent);
+            border-radius:  var(--r-medium);
+            content: '';
+            position: absolute;
+            left: 0;
+            
+            width: calc(var(--u) * 2);
+            height: calc(var(--u) * 2);
+            
+        }
+        .opts-field [type=checkbox] + .opts-field-label::after {
+            background-color: var(--c-accent);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16"><polyline points="4 8.43 6.67 11 12 5" fill="none" stroke="white" stroke-miterlimit="10" stroke-width="2"/></svg>');
+            border-radius:  var(--r-medium);
+            position: absolute;
+            left: 0;
+            width: calc(var(--u) * 2);
+            height: calc(var(--u) * 2);
+            
+        }
+        .opts-field [type=checkbox]:checked + .opts-field-label::after {
+            content: ''
+        }
+        .opts-group > button {
+            margin-top: var(--u)
+        }
+    </style>
+    
+    <div class="opts-group">
+        <div class="opts-group-title">Enabled Applets</div>
+          
+        <label class="opts-field" each={ applet in Object.entries(appletIndex) }>
+            <input type="checkbox" checked={enabledApplets.includes(applet[0])} />
+            <span class="opts-field-label" onclick={() => toggleApplet(applet[0]) }>{applet[1].title}</span>
+        </label>
+        
+        <button class="yOS-btn -full-width -primary" onclick={applyChanges}>Apply Changes</button>
+    </div>
+    
+    <script>
+    import appletIndex from '../appletIndex.js'
+    import Lockr from '../lockr.js'
+    
+    //console.log(Object.entries(appletIndex))
+    
+    // omits the options applet, so they can't delete it
+    const newAppletIndex =  Object.keys(appletIndex).reduce((object, key) => {
+          if (key !== 'yos-options') {
+            object[key] = appletIndex[key]
+          }
+          return object
+        }, {})
+        
+    export default {
+        appletIndex: newAppletIndex,
+        enabledApplets: Lockr.smembers('enabledApplets'),
+        toggleApplet(item) {
+            
+            if (Lockr.sismember("enabledApplets", item)) {
+                Lockr.srem("enabledApplets", item)
+            } else {
+                Lockr.sadd("enabledApplets", item)
+            }
+        },
+        applyChanges () {
+            location.reload(true)
+        }
+    }
+    </script>
+</yos-options>

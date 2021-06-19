@@ -1,0 +1,49 @@
+<yOS_home>
+    <div class="yOS_desk-grid">
+        <template each={applet in enabledApplets}>
+            <yos-frame style={appletIndex[applet].style}>
+                <yos-app is={applet}></yos-app>
+            </yos-frame>
+        </template>
+    </div>
+
+    <script>
+        import lazy from '@riotjs/lazy'
+        
+        import Lockr from '../lockr.js'
+        import Loader from './loader.riot'
+        import appletIndex from '../appletIndex.js'
+
+
+        // enable default applets for new user
+        if (Lockr.get("enabledApplets") === undefined) {
+            console.log('loading yOS...', 'new user found. Enabling default applets')
+            Lockr.sadd('enabledApplets', 'calendar');
+            //Lockr.sadd('enabledApplets', 'yos-options');
+        }
+        
+        const currentlyEnabledApplets = Lockr.smembers('enabledApplets')
+        // makes sure that the options applet is always last
+        currentlyEnabledApplets.push("yos-options")
+        // dynamically import enabled applets
+        const generatedAppletComponentObj = {}
+        currentlyEnabledApplets.forEach(i => {
+            // can't seem to get the Loader to disappear once loaded lazy(Loader, () => import())
+            generatedAppletComponentObj[i] = lazy(() => import(
+                /* webpackPrefetch: true, webpackChunkName: 'applets/[request]' */
+                `../applets/${i}.riot`
+            ))
+        })
+        
+        export default {
+            onBeforeMount(props, state) {
+                // right after the component is mounted on the page
+                this.enabledApplets = currentlyEnabledApplets
+                this.appletIndex = appletIndex
+            },
+            components: {
+                ...generatedAppletComponentObj
+            }
+        }
+    </script>
+</yOS_home>

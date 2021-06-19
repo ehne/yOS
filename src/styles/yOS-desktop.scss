@@ -1,0 +1,113 @@
+body,
+html {
+    font-family: sans-serif;
+    background-color: var(--c-bg);
+    color: var(--c-fg);
+    height: 100%
+}
+
+
+.yOS_desk {
+    &-page {
+        padding: calc(var(--u) * 4);
+        /*min-height: 100%*/
+    }
+
+    &-logo {
+        font-weight: 800;
+        height: calc(var(--u) * 3);
+        margin-bottom: calc(var(--u) * 2);
+        &-fill {
+            fill: var(--c-fg)
+        }
+        
+    }
+
+    &-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: calc(var(--u) * -1);
+    }
+    
+    &-frame {
+        
+        --c-accent: hsl(var(--c-accent-h), var(--c-accent-s), var(--c-accent-l));
+        --c-contrast: hsl(var(--c-accent-h), var(--c-accent-s), 99%);
+        --c-accent-light: hsla(var(--c-accent-h), var(--c-accent-s), var(--c-accent-light-l));
+        
+        margin: calc(var(--u) * 1);
+        
+        border: 2px solid var(--c-accent);
+        border-radius: var(--r-large);
+
+        width: var(--f-width);
+        height: var(--f-width);
+        position: relative;
+        
+        &>.frame-inner {
+            position: absolute;
+            top: calc(var(--u) * 2);
+            left: calc(var(--u) * 2);
+            right: calc(var(--u) * 2);
+            bottom: calc(var(--u) * 2);
+            /*padding: calc(var(--u) * 2); */
+            overflow: scroll;
+        }
+        
+    }
+    
+    /* SPINNER */
+    &-loader {
+      width: calc(var(--u) * 6);
+      height: calc(var(--u) * 6);
+      border: var(--u) solid var(--c-accent-light);
+      border-bottom-color: var(--c-accent);
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: yOS_rotation 1s linear infinite;
+      position: absolute;
+      top: calc(50% - calc(var(--u) * 3));
+      left: calc(50% - calc(var(--u) * 3))
+    }
+    
+    @keyframes yOS_rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    } 
+
+    /* MODAL */
+    
+    &-modal {
+        &-bg {
+            background-color: var(--c-med-a);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--u) * 2)
+        }
+        &-card{
+            background-color: var(--c-bg);
+            width: calc(var(--u) * 100);
+            height: calc(var(--u) * 70);
+            border-radius: var(--r-large);
+            &__titlebar {
+                padding: var(--u);
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border-bottom: 2px solid var(--c-med)
+            }
+        }
+    }
+}

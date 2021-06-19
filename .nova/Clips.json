@@ -1,0 +1,11 @@
+{
+  "clips" : [
+    {
+      "content" : "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>$PARENT_FOLDER Applet for yOS<\/title>\n<\/head>\n<body>\n\t<turbo-frame id=\"applet\">\n\t\t<style nonce>\n\t\t\t\n\t\t<\/style>\n\t\t$0\n\t<\/turbo-frame>\n<\/body>\n<\/html>",
+      "name" : "applet_template",
+      "scope" : "editor",
+      "syntax" : "html",
+      "trigger" : "applet"
+    }
+  ]
+}

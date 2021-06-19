@@ -1,0 +1,13 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "node-sass src\/styles\/yOS-app.scss yOS-app.css\nnode-sass src\/styles\/yOS-desktop.scss yOS-desktop.css\n\nnpm run build:dev\n"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "npm run start"
+    }
+  },
+  "identifier" : "9BC41B52-72E6-4F2B-AD23-7B9EB19204FC"
+}

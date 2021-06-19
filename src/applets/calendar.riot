@@ -1,0 +1,92 @@
+<calendar>
+    <style nonce>
+        .cal-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+        }
+
+        .cal-date {
+            font-weight: 800;
+            font-size: calc(var(--u) * 8);
+            text-align: center;
+            color: var(--c-accent);
+        }
+
+        .cal-title {
+            text-align: center;
+            color: var(--c-med);
+
+        }
+
+        .cal-icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--u);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0
+        }
+
+        .cal-content {
+            position: relative;
+            z-index: 3
+        }
+
+        .cal-icon>svg {
+            fill: var(--c-accent-light)
+        }
+
+        .cal-button {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+        }
+    </style>
+    <div class="cal-main">
+
+        <div class="call-content">
+            <div class="cal-title">
+                Today's Date:
+            </div>
+            <div id="cal_date" class="cal-date">
+                { date }
+            </div>
+        </div>
+
+    </div>
+    <script>
+        Date.prototype.toShortFormat = function() {
+
+            let monthNames = ["Jan", "Feb", "Mar", "Apr",
+                "May", "Jun", "Jul", "Aug",
+                "Sep", "Oct", "Nov", "Dec"
+            ];
+
+            let day = this.getDate();
+
+            let monthIndex = this.getMonth();
+            let monthName = monthNames[monthIndex];
+
+            let year = this.getFullYear();
+
+            return `${day}-${monthName}-${year}`;
+        }
+
+        export default {
+            onBeforeMount() {
+                // ..on every update
+                let todaysDate = new Date()
+                todaysDate = todaysDate.toShortFormat().split("-")
+                this.date = `${todaysDate[0]} ${todaysDate[1]}`
+
+            }
+        }
+    </script>
+</calendar>
