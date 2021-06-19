@@ -1,5 +1,5 @@
 <p>
-  <img alt="Y OS" src="https://github.com/ehne/yOS/raw/master/design_files/gh-card.png" align="center" />
+  <img alt="Y OS" src="https://github.com/ehne/yOS/raw/main/design_files/gh-card.png" align="center" />
 </p>
 
 <h1 align="center">
