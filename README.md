@@ -9,3 +9,12 @@
 > a web OS for my little experiments that don't warrant a full website.
 
 [Launch yOS](https://yos.vercel.app)
+
+
+---
+
+#### Todo
+- [x] Basic UI.
+- [ ] Migrate some old projects.
+- [x] Add url system for enabling one applet.
+- [ ] Figure out a way of generating an applet card.

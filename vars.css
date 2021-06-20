@@ -1,0 +1,33 @@
+:root {
+    /* [c]olours */
+    --c-bg: hsl(0, 0%, 100%);
+    --c-med: hsl(0, 0%, 50%);
+    --c-med-a: hsla(0, 0%, 0%, 50%);
+    --c-fg: hsl(0, 0%, 0%);
+    
+    --c-accent-h: 0;
+    --c-accent-s: 0%;
+    --c-accent-l: 0%;
+    
+    --c-accent-light-l: 90%;
+    
+    /* [r]adii */
+    --r-small: 0px;
+    --r-medium: 4px;
+    --r-large: 8px;
+    
+    /* [u]nit */
+    --u: 8px;
+    
+    /* [f]rame */
+    --f-width: calc(var(--u) * 38);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --c-bg: hsl(0, 0%, 10%);
+        --c-med: hsl(0, 0%, 60%);
+        --c-fg: hsl(0, 0%, 100%);
+        --c-accent-light-l: 20%
+    }
+}

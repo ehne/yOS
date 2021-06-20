@@ -2,7 +2,7 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "script" : "node-sass src\/styles\/yOS-app.scss yOS-app.css\nnode-sass src\/styles\/yOS-desktop.scss yOS-desktop.css\n\nnpm run build:dev\n"
+      "script" : "node-sass src\/styles\/yOS-app.scss public\/yOS-app.css\nnode-sass src\/styles\/yOS-desktop.scss public\/yOS-desktop.css\n\nnode-sass src\/styles\/yOS-app.scss yOS-app.css\nnode-sass src\/styles\/yOS-desktop.scss yOS-desktop.css\n\n\nnpm run build:dev\n"
     },
     "run" : {
       "enabled" : true,
