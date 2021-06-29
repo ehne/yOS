@@ -1,6 +1,6 @@
 {
   "workspace.art_style" : 1,
-  "workspace.color" : 8,
+  "workspace.color" : 0,
   "workspace.name" : "yOS",
   "workspace.preview_append_paths" : false,
   "workspace.preview_type" : "custom",

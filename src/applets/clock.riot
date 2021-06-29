@@ -4,7 +4,7 @@
             fill: var(--c-med)
         }
         .clock-indicator {
-            fill: var(--c-accent)
+            fill: var(--c-accent);
         }
         .clock-bottom-half {
             stroke: var(--c-accent);
@@ -61,7 +61,7 @@
                              <use xlink:href="#path-3"></use>
                          </mask>
                          <use id="Mask-Copy" stroke="#000000" stroke-width="2" fill="#000000" opacity="0" xlink:href="#path-3"></use>
-                         <circle id="Oval" mask="url(#mask-4)" cx="24" cy="141" r="16" class="clock-indicator"></circle>
+                         <circle id="Oval" mask="url(#mask-4)" cx="24" cy="141" r="16" class="clock-indicator" opacity={state.visible}></circle>
                      </g>
                  </g>
              </g>
@@ -71,9 +71,11 @@
     <script>
         export default {
             state: {
-                time: 0
+                time: 0,
+                visible: 0
             },
             onBeforeMount(props, state) {
+                
                 setInterval(()=> {
                       //console.log('ooh updated', this.state.time)
                       const d = new Date()
@@ -81,7 +83,8 @@
                       const percentDone = (h + (m/60) + (s/3600))/24
                       this.update({
                           time: percentDone,
-                          timeText: `${h}:${m}`
+                          timeText: `${h}:${m}`,
+                          visible: 1
                       })
                   }, 1000)
             }

@@ -1,0 +1,83 @@
+<days-since>
+    <style nonce > 
+        .since-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 91%;
+        }
+        .since-button {
+            position: absolute;
+            bottom: 0;
+            left: 0
+        }
+        .since-count {
+            font-weight: 900;
+            font-size: calc(var(--u) * 18);
+            text-align: center;
+            color: var(--c-accent);
+            line-height: 1;
+            width: 100%
+        }
+        .since-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: var(--c-med);
+        }
+    </style>
+<div class="since-main">
+    <div style="width: 100%">
+        <div class="since-text">
+            Days since {state.oldDate.toShortFormat()} 
+        </div>
+        
+        <div class="since-count">
+            
+{-Math.ceil((state.oldDate.getTime() - state.currentDate.getTime())/ (1000 * 60 * 60 * 24))}
+        </div>
+
+    <button class="yOS-btn -full-width -primary since-button" onclick={resetCounter}>Reset counter</button>
+    </div>
+</div>
+<script>
+    import lockr from '../lockr.js';
+    
+    Date.prototype.toShortFormat = function() {
+
+        let monthNames = ["January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        ];
+
+        let day = this.getDate();
+
+        let monthIndex = this.getMonth();
+        let monthName = monthNames[monthIndex];
+
+        let year = this.getFullYear();
+
+        return `${monthName} ${day}, ${year}`;
+    }
+
+
+    const todaysDate = new Date()
+    if (lockr.get('date') === undefined) {
+        lockr.set('date', todaysDate)
+    }
+    console.log(lockr.get('date'))
+    export default {
+        state: {
+            oldDate: new Date(lockr.get('date')),
+            currentDate: todaysDate
+        },
+        resetCounter() {
+            lockr.set('date', new Date())
+            this.update({
+                oldDate: new Date(lockr.get('date')),
+                currentDate: new Date()
+            })
+        }
+    }
+</script>
+</days-since>

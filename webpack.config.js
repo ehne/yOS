@@ -4,12 +4,13 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    main: './src/index.js',
+    launch: './src/launch.js'
   },
   output: {
     path: path.resolve(__dirname, 'public/dist'),
     publicPath: '/dist/',
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     chunkFilename: 'chunks/[name]/index.[chunkhash].js',
     devtoolModuleFilenameTemplate: 'source-webpack:///[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: 'source-webpack:///[resourcePath]?[hash]'

@@ -10,5 +10,9 @@ export default {
     clock: {
         title: 'Clock',
         style: '--c-accent-h:200;--c-accent-l:54%;--c-accent-s:94%'
+    },
+    'days-since': {
+        title: 'Days Since',
+        style: '--c-accent-h:22;--c-accent-l:54%;--c-accent-s:94%'
     }
 }
